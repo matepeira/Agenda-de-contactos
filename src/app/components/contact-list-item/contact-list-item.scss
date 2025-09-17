@@ -1,0 +1,20 @@
+.favorite {
+   font-weight: bold;
+   color: rgb(30, 0, 202);
+   background-color: yellow;
+   display: flex;
+   justify-content: space-between;
+   margin: 0px 40px 0px 40px;
+   flex: 1;
+}
+
+li {
+   background-color:rgb(30, 0, 202);
+   color: yellow;
+   display: flex;
+   justify-content: space-between;
+   margin: 0px 40px 0px 40px;
+   padding: 0px 0px 0px 15px;
+   flex: 1;
+}   
+

@@ -1,0 +1,13 @@
+@use "./../../../../public/styles/forms-pages.scss";
+
+.error{
+    color: var(--color-error);
+}
+
+div {
+   background-color:rgb(30, 0, 202);
+   color: yellow;
+   display: flex;
+   justify-content: space-between;
+   margin: 0px 40px 0px 40px;
+}
