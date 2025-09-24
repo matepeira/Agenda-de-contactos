@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-contacts-page',
-  imports: [RouterModule,ContactListItem, FormsModule],
+  imports: [RouterModule,ContactListItem, FormsModule,],
   templateUrl: './contacts-page.html',
   styleUrl: './contacts-page.scss'
 })
@@ -21,18 +21,4 @@ export class ContactsPage implements OnInit {
   authService = inject(AuthService);
   contactsService = inject(ContactsService);
 
-  createContact(form:any){
-    const nuevoContacto: NewContact ={
-      firstName: form.firstName,
-      lastName: form.lastName,
-      address: form.address,
-      email: form.email,
-      image: form.image,
-      number: form.number,
-      company: form.company,
-      isFavorite: form.isFavorite
-    }
-
-    this.contactsService.createContact(nuevoContacto)
-  }
 }

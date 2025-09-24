@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,  NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { UsersService } from '../../services/users-service';
 import { Spinner } from "../../components/contact-list-item/spinner/spinner";
@@ -18,7 +18,7 @@ export class RegisterPage {
 
 
 
-  async register(form:any){
+  async register(form:NgForm){
     console.log(form.value);
     this.errorRegister = false;
     if(!form.value.email || 
