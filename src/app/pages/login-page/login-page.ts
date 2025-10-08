@@ -24,9 +24,8 @@ export class LoginPage {
       return
     }
     this.isLoading = true;
-    this.authService.login(form.value);
+    await this.authService.login(form.value);
     this.isLoading = false;
-    this.errorLogin = true;
   }
 }
 

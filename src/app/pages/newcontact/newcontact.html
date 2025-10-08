@@ -1,6 +1,10 @@
 <div id="container" class="card">
+@if (idContacto()) {
+ <h2>Editar contacto</h2>
+ }@else {
  <h2>Nuevo contacto</h2>
- <form (ngSubmit)="createContact(newContactForm)" #newContactForm="ngForm">
+ }
+ <form (ngSubmit)="handleFormSubmission(newContactForm)" #newContactForm="ngForm">
   <div>
     <label for="first-name">Nombre*</label>
     <input id="first-name" name="firstName" type="text" ngModel required="true" minlength="2" maxlength="20" #firstName="ngModel">
@@ -39,7 +43,14 @@
   @if (errorEnBack) {
       <p class="error">Error indeterminado, intente nuevamente.</p>
     } 
-  <button [disabled]="newContactForm.invalid">+</button>
+    @if (idContacto()) {
+ <button [disabled]="newContactForm.invalid">Editar</button>
+ }@else {
+  <button [disabled]="newContactForm.invalid">Crear</button>
+ }
+ @if (isloading) {
+      <app-spinner></app-spinner>
+    } 
 
  </form>
  </div>

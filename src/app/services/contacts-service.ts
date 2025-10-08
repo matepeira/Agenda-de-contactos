@@ -67,15 +67,15 @@ export class ContactsService {
         },body: JSON.stringify(contactoEditado)
       });
     if (!res.ok) return;
-    const resContact: Contact = await res.json();
+
     /** Edita la lista actual de contactos reemplazando sólamente el que editamos */
      this.contacts = this.contacts.map(contact => {
-      if(contact.id === resContact.id) {
-        return resContact;
+      if(contact.id === contactoEditado.id) {
+        return contactoEditado;
       };
       return contact;
     });
-    return resContact; 
+    return contactoEditado;
    }
 
   /** Borra un contacto */
