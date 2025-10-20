@@ -58,25 +58,25 @@ export class ContactsService {
   }
 
   async editContact(contactoEditado: Contact) {
-    const res = await fetch (this. URL_BASE+"/"+contactoEditado.id,
+    const res = await fetch (`${this.URL_BASE}/${contactoEditado.id}`,
       {
         method: "PUT",
         headers: {
           "content-type": "application/json",
-          Authorization: "Bearer"+ this.authService.token
-        },body: JSON.stringify(contactoEditado)
+          Authorization: "Bearer "+ this.authService.token 
+        },
+        body: JSON.stringify(contactoEditado)
       });
-    if (!res.ok) return;
+    if (!res.ok) return null;
+    const actualizado: Contact = await res.json();
+
 
     /** Edita la lista actual de contactos reemplazando sólamente el que editamos */
-     this.contacts = this.contacts.map(contact => {
-      if(contact.id === contactoEditado.id) {
-        return contactoEditado;
+     this.contacts = this.contacts.map(contact => 
+      contact.id === actualizado.id ? actualizado : contact
+    ); 
+        return actualizado;
       };
-      return contact;
-    });
-    return contactoEditado;
-   }
 
   /** Borra un contacto */
   async deleteContact(id:string | number) {

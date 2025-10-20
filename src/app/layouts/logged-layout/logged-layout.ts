@@ -15,7 +15,7 @@ export class LoggedLayout {
 
 openLogoutModal(){
 Swal.fire({
-  title: "Do you want to save the changes?",
+  title: "Queres cerrar sesion?",
   showDenyButton: true,
   showCancelButton: true,
   showConfirmButton: false,
