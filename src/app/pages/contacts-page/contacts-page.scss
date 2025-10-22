@@ -4,15 +4,98 @@
     color: var(--color-error);
 }
 
-div {
-   background-color:rgb(30, 0, 202);
-   color: yellow;
-   display: flex;
-   justify-content: space-between;
-   margin: 0px 40px 0px 40px;
+.list-header { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px auto 0px auto;
+    max-width: 1050px;
+    padding: 10px 35px; 
+    border-bottom: 2px solid #555;
+    font-family: 'Avenir', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: blue;
+    background-color: white;
+    border-radius: 8px 8px 0 0;
 }
 
-#container{
-    margin: 50px 400px 0px 400px;
-    justify-content: block;
+.list-header span {
+    flex: 1; 
+    text-align: left;
+    min-width: 110px;
+    padding-right: 8px;
+}
+
+.list-header span:last-child {
+    flex: 0 0 110px;
+    text-align: center;
+}
+
+
+ul {
+    list-style: none;
+    margin: 0 auto;
+    max-width: 1050px;
+    padding: 0px ;
+}
+
+ul a {
+    display: block;
+    color: blue;
+    border: 2px solid blue;
+    padding: 10px 0px 10px 0px;
+    background-color: white;
+    width: 100%;
+}
+
+
+app-contact-list-item {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 12px;
+}
+
+.botonAgregarContacto{
+    position: fixed;
+    bottom: 375px;
+    right: 55px;
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    color: blue;
+    font-size: 40px;
+    border-radius: 100%;
+    box-shadow: 0 2px 4px blue;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-decoration: none;
+}
+
+app-contact-list-item { display:flex; padding:0 20px; }
+
+app-contact-list-item .col{
+  flex:1;
+  min-width:110px;
+  padding-right:8px;
+  align-self:center;
+  text-align:left;
+}
+
+app-contact-list-item .actions{
+  flex:0 0 110px;
+  display:flex;
+  justify-content:center;
+  gap:6px;
+}
+
+app-contact-list-item .btn{
+  border:2px solid blue;
+  background:#fff;
+  color:blue;
+  padding:6px 12px;
+  border-radius:8px;
+  font:inherit;
+  cursor:pointer;
 }

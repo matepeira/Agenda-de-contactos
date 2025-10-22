@@ -1,16 +1,17 @@
 
-<li [class.favourite]="contact().isFavorite === true">
-    <span>{{contact().firstName}} {{contact().lastName}}</span>
-    <span>{{contact().number}}</span>
-    <span>{{contact().email}}</span>
-    <span>-</span>
-    <span>
-        <button (click)="openDeleteModal()">Borrar</button>
-        <a [routerLink]="['/contacts',contact().id,'edit']">Editar</a>
-    </span>
-    <span>
-        @if (contact().isFavorite === true) {
-            ⭐
-        }
-    </span>
-</li>
+<div class="col name">{{ contact().firstName }} {{ contact().lastName }}</div>
+<div class="col phone">{{ contact().number }}</div>
+<div class="col email">{{ contact().email }}</div>
+<div class="col groups"></div>
+<div class="col actions">
+  <button class="btn"
+          type="button"
+          (click)="$event.preventDefault(); $event.stopPropagation(); del.emit(contact().id)">
+    Borrar
+  </button>
+  <button class="btn"
+          type="button"
+          (click)="$event.preventDefault(); $event.stopPropagation(); edit.emit(contact().id)">
+    Editar
+  </button>
+</div>

@@ -1,10 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ContactListItem } from '../../components/contact-list-item/contact-list-item';
 import { Contact, NewContact } from '../../interfaces/contact';
 import { AuthService } from '../../services/auth-service';
 import { ContactsService } from '../../services/contacts-service';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contacts-page',
@@ -14,11 +15,27 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class ContactsPage implements OnInit {
-  ngOnInit(): void {
-    this.contactsService.getContacts();
-  }
-  
   authService = inject(AuthService);
   contactsService = inject(ContactsService);
-
+  router = inject(Router);  
+   ngOnInit(): void {
+    this.contactsService.getContacts();
+  }
+  onEdit(id: number) {               
+    this.router.navigate(['/contacts', id, 'edit']);
+  }
+  onDelete(id: number) {
+  Swal.fire({
+    title: "¿Desea borrar el contacto?",
+    showDenyButton: true,
+    showCancelButton: true,
+    showConfirmButton: false,
+    cancelButtonText: "Cancelar",
+    denyButtonText: "Borrar definitivamente"
+  }).then((result) => {
+    if (result.isDenied) {
+      this.contactsService.deleteContact(id);
+    }
+  });
+}
 }

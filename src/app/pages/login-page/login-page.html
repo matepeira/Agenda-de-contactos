@@ -1,5 +1,5 @@
 <div id="container" class="card">
-  <h1>INICIAR SESION</h1>
+  <h1>Iniciar Sesion</h1>
   <h2>Ingrese sus datos</h2>
   <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
   <div class="divlogin">
@@ -17,12 +17,14 @@
         <p class="error">Debe colocar una contraseña de al menos 4 caracteres.</p>
       }
   </div>
-  <button>Iniciar sesión</button>
-  @if(isLoading) {
-    <app-spinner></app-spinner>
-  }
+  <div class="login-button-container">
+    <button>Iniciar sesión</button>
+    @if(isLoading) {
+        <app-spinner></app-spinner>
+    }
+</div>
   @if (errorLogin) {
-    <p class="error">Datos de sesión incorrectos, intente nuevamente.</p>
+    <p class="errorSesion">Datos de sesión incorrectos, intente nuevamente.</p>
   } 
   <p>¿No tenés cuenta? <a routerLink="/register">Registrate</a></p>
 </form>
