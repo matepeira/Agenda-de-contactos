@@ -9,6 +9,7 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './contact-details-page.html',
   styleUrl: './contact-details-page.scss'
 })
+
 export class ContactDetailsPage implements OnInit {
   idContacto = input.required<string>();
   readonly contactService = inject(ContactsService);
@@ -16,7 +17,7 @@ export class ContactDetailsPage implements OnInit {
   cargandoContacto = false;
   router = inject(Router);
 
-  async ngOnInit() {
+async ngOnInit() {
     if(this.idContacto()){
       // Si encuentro el contacto en el array del servicio lo uso, mientras tanto cargo el contacto del backend por si hubo cambios en el contacto
       this.contacto = this.contactService.contacts.find(contacto => contacto.id.toString() === this.idContacto());
