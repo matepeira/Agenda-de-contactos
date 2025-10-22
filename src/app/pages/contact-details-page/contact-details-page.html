@@ -1,19 +1,35 @@
+<div class="card">
 @if(cargandoContacto){
   <p>Cargando contacto...</p>
 } @else if(!contacto) {
   <p>No se encontró el contacto</p>
 } @else {
+
+  @if (contacto.image) {
+    <img [src]="contacto.image" alt="Imagen de perfil de {{contacto!.firstName}}" class="contact-image">
+  }
+
   <h1>{{contacto!.firstName}} {{contacto!.lastName}}</h1>
+  
   <p>Email: {{contacto.email}}</p>
   <p>Teléfono: {{contacto.number}}</p>
-@if (contacto.isFavorite) {
-  <p>⭐</p>
-  <button (click)="toggleFavorite()">Desmarcar favorito</button>
-} @else {
-  <button (click)="toggleFavorite()">Marcar como favorito</button>
+  
+  @if (contacto.isFavorite) {
+    <p><span class="favorite-star">⭐ Favorito</span></p>
+  }
+  
+  <div class="action-buttons">
+    <button (click)="toggleFavorite()">
+      @if (contacto.isFavorite) {
+        Desmarcar favorito
+      } @else {
+        Marcar como favorito
+      }
+    </button>
+
+    <a [routerLink]="['/contacts', idContacto(), 'edit']">Editar</a>
+
+    <button (click)="deleteContact()">Eliminar</button>
+  </div>
 }
-  <p>
-    <a [routerLink]="['/contacts',idContacto()]">Editar</a>
-  </p>
-  <button (click)="deleteContact()">Eliminar</button>
-}
+</div>

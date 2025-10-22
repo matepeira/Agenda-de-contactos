@@ -7,7 +7,7 @@
  }
  <form (ngSubmit)="handleFormSubmission(newContactForm)" #newContactForm="ngForm">
   <div>
-    <label for="first-name">Nombre*</label>
+    <label for="first-name">Nombre</label>
     <input id="first-name" name="firstName" type="text" ngModel required="true" minlength="2" maxlength="20" #firstName="ngModel">
     @if (firstName.dirty && firstName.invalid) {
       <p class="error">El nombre es obligatorio y no puede ser una sola letra</p>
@@ -18,7 +18,7 @@
     <input id="last-name" name="lastName" type="text" ngModel maxlength="20">
   </div>
   <div>
-    <label for="phone">Telefono*</label>
+    <label for="phone">Telefono</label>
     <input id="phone" name="number" type="text" ngModel required="true" minlength="3" maxlength="30">
   </div>
   <div>
